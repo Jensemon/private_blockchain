@@ -1,11 +1,10 @@
-
-// added leveldb
+// import levelDB
 const level = require('level');
 const chainDB = './chaindata';
 const db = level(chainDB);
 
+// import crypto js
 const SHA256 = require('crypto-js/sha256');
-
 
 class Block {
   constructor(data) {
@@ -170,42 +169,18 @@ class Blockchain {
       .catch( () => console.log(`Erroneous promise passed as param to validateChain()`))
     }
   }
-
-
 }
 
 let blockchain = new Blockchain();
 
-
+// testing
 (function () {
   setTimeout(function () {
-    blockchain.validateChain();
+    // blockchain.validateChain();
     // blockchain.validateBlock(0);
     // blockchain.validateBlock(1);
     // blockchain.validateBlock(2);
     // blockchain.validateBlock(3);
-    // blockchain.addBlock(new Block('This is block 4'));
+    blockchain.addBlock(new Block('This is block 1'));
   }, 100)
 })()
-
-// db.get(2)
-//   .then(value => {
-//     let block = JSON.parse(value);
-//     block.previousBlockHash = 'Corrupt hash';
-//     db.put(2, JSON.stringify(block))
-//       .then(() => {
-//         blockchain.validateChain();
-//       })
-//   })
-
-// setTimeout(() => console.log(x), 200);
-
-
-// blockchain.getBlockHeight();
-// blockchain.getBlock(3).then(value => console.log(value))
-// blockchain.getBlock(1);
-// blockchain.getBlock(2);
-// blockchain.getBlock(3);
-// blockchain.addBlock(new Block('one more block'))
-
-// blockchain.validateBlock(2)
